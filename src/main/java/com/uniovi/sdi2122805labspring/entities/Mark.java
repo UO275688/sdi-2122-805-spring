@@ -29,4 +29,18 @@ public class Mark {
     public void setScore(Double score) {
         this.score = score;
     }
+
+    public Mark() {
+    }
+
+    public Mark(Long id, String description, Double score) {
+        this.id = id;
+        this.description = description;
+        this.score = score;
+    }
+
+    @Override
+    public String toString() {
+        return "Mark{" + "id=" + id + ", description='" + description + '\'' + ", score=" + score + '}';
+    }
 }
