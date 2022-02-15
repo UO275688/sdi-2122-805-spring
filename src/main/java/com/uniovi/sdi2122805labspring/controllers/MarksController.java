@@ -42,6 +42,7 @@ public class MarksController {
         return "mark/add";
     }
 
+    //igual q getDetail?
     @RequestMapping(value = "/mark/edit/{id}")
     public String getEdit(Model model, @PathVariable Long id) {
         model.addAttribute("mark", marksService.getMark(id));
