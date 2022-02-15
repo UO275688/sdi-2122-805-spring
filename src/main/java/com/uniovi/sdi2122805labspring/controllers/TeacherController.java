@@ -3,17 +3,20 @@ package com.uniovi.sdi2122805labspring.controllers;
 import com.uniovi.sdi2122805labspring.entities.Teacher;
 import com.uniovi.sdi2122805labspring.services.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
 public class TeacherController {
 
     @Autowired
     private TeacherService teacherService;
 
     @RequestMapping("/teacher/list")
-    public String getList() {
-        return teacherService.getTeachers().toString();
+    public String getList(Model model) {
+        model.addAttribute("teacherList", teacherService.getTeachers());
+        return "mark/list";
     }
 
     @RequestMapping(value = "/teacher/add", method = RequestMethod.POST)
@@ -22,9 +25,10 @@ public class TeacherController {
         return "Teacher with id " + teacher.getId() + " added";
     }
 
-    @RequestMapping("/teacher/details/{id}")
-    public String getDetail(@PathVariable Long id) {
-        return teacherService.getTeacher(id).toString();
+    @RequestMapping("/mark/details/{id}")
+    public String getDetail(Model model, @PathVariable Long id) {
+        model.addAttribute("teacher", teacherService.getTeacher(id));
+        return "Ok";
     }
 
     @RequestMapping("/teacher/delete/{id}")
@@ -35,8 +39,9 @@ public class TeacherController {
 
     //como el getdetail?
     @RequestMapping(value = "/teacher/edit/{id}")
-    public String getEdit(@PathVariable Long id) {
-        return teacherService.getTeacher(id).toString();
+    public String getEdit(Model model, @PathVariable Long id) {
+        model.addAttribute("teacher", teacherService.getTeacher(id));
+        return "OK";
     }
 
     @RequestMapping(value = "/teacher/edit/{id}", method = RequestMethod.POST)

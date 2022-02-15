@@ -1,7 +1,14 @@
 package com.uniovi.sdi2122805labspring.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Teacher {
 
+    @Id
+    @GeneratedValue
     private Long id;
     private String nombre;
     private String apellidos;
@@ -39,7 +46,7 @@ public class Teacher {
         return categoria;
     }
 
-    public Teacher() {
+    /*public Teacher() {
     }
 
     public Teacher(Long id, String nombre, String apellidos, String categoria) {
@@ -47,7 +54,7 @@ public class Teacher {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.categoria = categoria;
-    }
+    }*/
 
     @Override
     public String toString() {
