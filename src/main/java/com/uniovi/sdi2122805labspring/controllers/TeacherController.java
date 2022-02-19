@@ -25,7 +25,7 @@ public class TeacherController {
         return "Teacher with id " + teacher.getId() + " added";
     }
 
-    @RequestMapping("/mark/details/{id}")
+    @RequestMapping("/teachers/details/{id}")
     public String getDetail(Model model, @PathVariable Long id) {
         model.addAttribute("teacher", teacherService.getTeacher(id));
         return "Ok";
