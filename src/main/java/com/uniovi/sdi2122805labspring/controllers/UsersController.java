@@ -15,6 +15,7 @@ import com.uniovi.sdi2122805labspring.validators.SignUpFormValidator;
 
 @Controller
 public class UsersController {
+
     @Autowired
     private UsersService usersService;
 
@@ -62,8 +63,13 @@ public class UsersController {
     }
 
     @RequestMapping(value = "/user/edit/{id}", method = RequestMethod.POST)
-    public String setEdit(Model model, @PathVariable Long id, @ModelAttribute User user) {
-        usersService.addUser(user);
+    public String setEdit(@ModelAttribute User user, @PathVariable Long id) {
+        User originalUser = usersService.getUser(id);
+        // modificar dni, nombre y apellidos
+        originalUser.setDni(user.getDni());
+        originalUser.setName(user.getName());
+        originalUser.setLastName(user.getLastName());
+        usersService.addUser(originalUser);
         return "redirect:/user/details/" + id;
     }
 
@@ -97,5 +103,11 @@ public class UsersController {
         User activeUser = usersService.getUserByDni(dni);
         model.addAttribute("markList", activeUser.getMarks());
         return "home";
+    }
+
+    @RequestMapping("/user/list/update")
+    public String updateList(Model model) {
+        model.addAttribute("usersList", usersService.getUsers());
+        return "user/list :: tableUsers";
     }
 }

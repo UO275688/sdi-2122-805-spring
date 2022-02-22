@@ -7,7 +7,6 @@ import com.uniovi.sdi2122805labspring.repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.uniovi.sdi2122805labspring.entities.*;
-import com.uniovi.sdi2122805labspring.services.UsersService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Service
