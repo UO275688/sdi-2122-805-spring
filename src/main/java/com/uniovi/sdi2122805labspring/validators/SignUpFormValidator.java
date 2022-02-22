@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.*;
 
-
 @Component
 public class SignUpFormValidator implements Validator {
 
@@ -25,7 +24,9 @@ public class SignUpFormValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         User user = (User) target;
+
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "dni", "Error.empty");
+
         if (user.getDni().length() < 5 || user.getDni().length() > 24) {
             errors.rejectValue("dni", "Error.signup.dni.length");
         }

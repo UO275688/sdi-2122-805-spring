@@ -9,55 +9,55 @@ public class Teacher {
 
     @Id
     @GeneratedValue
-    private Long id;
-    private String nombre;
-    private String apellidos;
-    private String categoria;
+    private String dni;
+    private String name;
+    private String lastName;
+    private String category;
 
-    public Long getId() {
-        return id;
+    public String getDni() {
+        return dni;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(String dni) {
+        this.dni = dni;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
 
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public String getApellidos() {
-        return apellidos;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
-    public String getCategoria() {
-        return categoria;
+    public String getCategory() {
+        return category;
     }
 
-    /*public Teacher() {
+    public Teacher() {
     }
 
-    public Teacher(Long id, String nombre, String apellidos, String categoria) {
-        this.id = id;
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.categoria = categoria;
-    }*/
+    public Teacher(String dni, String name, String lastName, String category) {
+        this.dni = dni;
+        this.name = name;
+        this.lastName = lastName;
+        this.category = category;
+    }
 
     @Override
     public String toString() {
-        return "teacher{" + "id=" + id + ", name=" + nombre +  ", apellidos=" + apellidos +  ", categoria=" + categoria +'}';
+        return "teacher{" + "id=" + dni + ", name=" + name +  ", apellidos=" + lastName +  ", categoria=" + category +'}';
     }
 }
