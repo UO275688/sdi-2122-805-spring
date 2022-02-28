@@ -11,6 +11,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
+import java.util.HashSet;
+import java.util.Set;
+
 @Controller //clase es un controlador(Rest) que responde a peticiones Rest
 public class MarksController {
 
@@ -23,8 +27,16 @@ public class MarksController {
     @Autowired
     private MarksValidator marksValidator;
 
+    @Autowired
+    private HttpSession httpSession;
+
     @RequestMapping("/mark/list")
     public String getList(Model model) {
+        Set<Mark> consultedList = (Set<Mark>) httpSession.getAttribute("consultedList");
+        if (consultedList == null) {
+            consultedList = new HashSet<Mark>();
+        }
+        model.addAttribute("consultedList", consultedList);
         model.addAttribute("markList", marksService.getMarks());
         return "mark/list";
     }
@@ -32,7 +44,7 @@ public class MarksController {
     @RequestMapping(value = "/mark/add", method = RequestMethod.POST)
     public String setMark(@Validated Mark mark, BindingResult result) {
         marksValidator.validate(mark, result);
-        if(result.hasErrors()){
+        if (result.hasErrors()) {
             return "/mark/add";
         }
 
