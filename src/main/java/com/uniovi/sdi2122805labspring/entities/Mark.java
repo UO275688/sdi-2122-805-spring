@@ -10,10 +10,11 @@ public class Mark {
     private Long id;
     private String description;
     private Double score;
+    private Boolean resend = false;
 
     @ManyToOne
     @JoinColumn(name = "user_id") //especifica la columna que va a crear una asociación entres las entidades.
-    private  User user;
+    private User user;
 
     public Mark() {
     }
@@ -61,12 +62,20 @@ public class Mark {
         this.score = score;
     }
 
-    public User getUser(){
+    public User getUser() {
         return user;
     }
 
-    public void setUser(User user){
+    public void setUser(User user) {
         this.user = user;
+    }
+
+    public Boolean getResend() {
+        return resend;
+    }
+
+    public void setResend(Boolean resend) {
+        this.resend = resend;
     }
 
     @Override
