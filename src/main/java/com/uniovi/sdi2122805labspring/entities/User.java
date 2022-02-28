@@ -36,6 +36,13 @@ public class User {
         this.lastName = lastName;
     }
 
+    public User(String dni, String name, String lastName, String role) {
+        super();
+        this.dni = dni;
+        this.name = name;
+        this.lastName = lastName;
+        this.role = role;
+    }
     public long getId() {
         return id;
     }
@@ -66,6 +73,14 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public Set<Mark> getMarks() {
