@@ -81,4 +81,19 @@ public class MarksService {
         }
         return marks;
     }
+
+    public List<Mark> searchMarksByDescriptionAndNameForUser(String searchText, User user) {
+        List<Mark> marks = new ArrayList<Mark>();
+        searchText = "%"+searchText+"%";
+
+        //Las notas del propio usuario si el usuario autenticado es ROLE_STUDENT
+        if (user.getRole().equals("ROLE_STUDENT")) {
+            marks = marksRepository.searchByDescriptionNameAndUser(searchText, user);
+        }
+        //Las notas de todos los usuarios si el usuario autenticado es ROLE_PROFESSOR.
+        if (user.getRole().equals("ROLE_PROFESSOR")) {
+            marks = marksRepository.searchByDescriptionAndName(searchText);
+        }
+        return marks;
+    }
 }
