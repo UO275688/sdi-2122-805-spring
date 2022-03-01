@@ -1,14 +1,20 @@
 package com.uniovi.sdi2122805labspring.controllers;
 
+import com.uniovi.sdi2122805labspring.entities.Mark;
 import com.uniovi.sdi2122805labspring.entities.Teacher;
+import com.uniovi.sdi2122805labspring.entities.User;
 import com.uniovi.sdi2122805labspring.services.TeacherService;
 import com.uniovi.sdi2122805labspring.validators.TeacherValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 
 @Controller
 public class TeacherController {
@@ -22,7 +28,7 @@ public class TeacherController {
     @RequestMapping("/teacher/list")
     public String getList(Model model) {
         model.addAttribute("teacherList", teacherService.getTeachers());
-        return "mark/list";
+        return "teacher/list";
     }
 
     @RequestMapping(value = "/teacher/add", method = RequestMethod.POST)
@@ -60,5 +66,11 @@ public class TeacherController {
         teacher.setId(id);
         teacherService.addTeacher(teacher);
         return "Teacher with id " + id + " edited";
+    }
+
+    @RequestMapping("/teacher/list/update")
+    public String updateList(Model model) {
+        model.addAttribute("teacherList", teacherService.getTeachers());
+        return "teacher/list :: tableTeachers";
     }
 }

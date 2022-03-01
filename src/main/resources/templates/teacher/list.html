@@ -1,10 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 
+<div class="container" id="main-container"><h2>Profesores</h2>
+    <p>Los profesores que actualmente figuran en el sistema son los siguientes:</p>
+    <button type="button" id="updateButton" class="btn btn-default">Actualizar</button>
+    <script> $("#updateButton").click(function () {
+        $("#tableTeachers").load('/teacher/list/update');
+    }); </script>
+    <div class="table-responsive">
+        <table class="table table-hover" th:fragment="tableTeachers" id="tableTeachers">
+            <thead>
+            <tr>
+                <th scope="col">DNI</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellidos</th>
+                <th scope="col">Categoria</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="teacher : ${teacherList}">
+                <td scope="row" th:text="${teacher.dni}"> 1</td>
+                <td th:text="${teacher.name}"> Pablo</td>
+                <td th:text="${teacher.lastName}"> Suarez</td>
+                <td th:text="${teacher.category}"> Categoria</td>
+                <td><a th:href="${'/teacher/details/' + teacher.dni}">detalles</a></td>
+                <td><a sec:authorize="hasRole('ROLE_ADMIN')" th:href="${'/teacher/edit/' + teacher.dni}">modificar</a></td>
+                <td><a sec:authorize="hasRole('ROLE_ADMIN')" th:href="${'/teacher/delete/' + teacher.dni}">eliminar</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 </body>
 </html>
