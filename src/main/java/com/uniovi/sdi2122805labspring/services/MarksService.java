@@ -20,6 +20,7 @@ public class MarksService {
     @Autowired
     private MarksRepository marksRepository;
 
+    @Autowired
     private final HttpSession httpSession;
 
     public MarksService(HttpSession httpSession) {
@@ -47,7 +48,6 @@ public class MarksService {
     }
 
     public void deleteMark(Long id) {
-        //marksList.removeIf(mark -> mark.getId().equals(id));
         marksRepository.deleteById(id);
     }
 
@@ -55,7 +55,6 @@ public class MarksService {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String dni = auth.getName();
         Mark mark = marksRepository.findById(id).get();
-
         if (mark.getUser().getDni().equals(dni)) {
             marksRepository.updateResend(revised, id);
         }
@@ -63,7 +62,6 @@ public class MarksService {
 
     public Page<Mark> getMarksForUser(Pageable pageable, User user) {
         Page<Mark> marks = new PageImpl<Mark>(new LinkedList<Mark>());
-
         if (user.getRole().equals("ROLE_STUDENT")) {
             marks = marksRepository.findAllByUser(pageable, user);
         }
@@ -75,11 +73,11 @@ public class MarksService {
 
     public Page<Mark> searchMarksByDescriptionAndNameForUser(Pageable pageable, String searchText, User user) {
         Page<Mark> marks = new PageImpl<Mark>(new LinkedList<Mark>());
-        searchText = "%"+searchText+"%";
+        searchText = "%" + searchText + "%";
 
         //Las notas del propio usuario si el usuario autenticado es ROLE_STUDENT
         if (user.getRole().equals("ROLE_STUDENT")) {
-            marks = marksRepository.searchByDescriptionNameAndUser(pageable,searchText, user);
+            marks = marksRepository.searchByDescriptionNameAndUser(pageable, searchText, user);
         }
         //Las notas de todos los usuarios si el usuario autenticado es ROLE_PROFESSOR.
         if (user.getRole().equals("ROLE_PROFESSOR")) {

@@ -32,6 +32,10 @@ public class UsersService {
         return usersRepository.findById(id).get();
     }
 
+    public User getUserByDni(String dni) {
+        return usersRepository.findByDni(dni);
+    }
+
     public void addUser(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         usersRepository.save(user);
@@ -39,9 +43,5 @@ public class UsersService {
 
     public void deleteUser(Long id) {
         usersRepository.deleteById(id);
-    }
-
-    public User getUserByDni(String dni) {
-        return usersRepository.findByDni(dni);
     }
 }

@@ -15,8 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import java.security.Principal;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -32,7 +31,6 @@ public class MarksController {
     @Autowired
     private MarksValidator marksValidator;
 
-    @Autowired
     private HttpSession httpSession;
 
     @RequestMapping("/mark/list")
@@ -48,7 +46,6 @@ public class MarksController {
         }
         model.addAttribute("markList", marks.getContent());
         model.addAttribute("page", marks);
-
         return "mark/list";
     }
 
@@ -89,12 +86,12 @@ public class MarksController {
     }
 
     @RequestMapping(value = "/mark/edit/{id}", method = RequestMethod.POST)
-    public String setEdit(@ModelAttribute Mark mark, @PathVariable Long id) {
-        Mark originalMark = marksService.getMark(id);
+    public String setEdit(Model model, @PathVariable Long id, @ModelAttribute Mark mark) {
+        Mark original = marksService.getMark(id);
         // modificar solo score y description
-        originalMark.setScore(mark.getScore());
-        originalMark.setDescription(mark.getDescription());
-        marksService.addMark(originalMark);
+        original.setScore(mark.getScore());
+        original.setDescription(mark.getDescription());
+        marksService.addMark(original);
         return "redirect:/mark/details/" + id;
     }
 
@@ -103,7 +100,7 @@ public class MarksController {
         String dni = principal.getName(); // DNI es el name de la autenticación
         User user = usersService.getUserByDni(dni);
         Page<Mark> marks = marksService.getMarksForUser(pageable, user);
-        model.addAttribute("markList",marks.getContent());
+        model.addAttribute("markList", marks.getContent());
         return "mark/list :: tableMarks";
     }
 

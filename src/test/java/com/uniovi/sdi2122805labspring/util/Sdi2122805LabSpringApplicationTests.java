@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 class Sdi2122805LabSpringApplicationTests {
 
     static String PathFirefox = "C:\\Program Files\\Mozilla Firefox\\firefox.exe";
+    //static String Geckodriver = "C:\\Path\\geckodriver-v0.30.0-win64.exe";
     static String Geckodriver = "C:\\Users\\mikel\\Documents\\UNIOVI\\SDI\\LAB\\LAB 5\\PL-SDI-Sesión5-material\\geckodriver-v0.30.0-win64.exe";
 
     //static String PathFirefox = "/Applications/Firefox.app/Contents/MacOS/firefox-bin";

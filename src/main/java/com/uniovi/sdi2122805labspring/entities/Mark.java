@@ -19,19 +19,6 @@ public class Mark {
     public Mark() {
     }
 
-    public Mark(Long id, String description, Double score) {
-        this.id = id;
-        this.description = description;
-        this.score = score;
-    }
-
-    public Mark(Long id, String description, Double score, User user) {
-        this.id = id;
-        this.description = description;
-        this.score = score;
-        this.user = user;
-    }
-
     public Mark(String description, Double score, User user) {
         this.description = description;
         this.score = score;

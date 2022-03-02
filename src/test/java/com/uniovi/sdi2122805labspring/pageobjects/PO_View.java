@@ -1,8 +1,7 @@
 package com.uniovi.sdi2122805labspring.pageobjects;
 
 import java.util.List;
-
-import com.uniovi.notaneitor.util.SeleniumUtils;
+import com.uniovi.sdi2122805labspring.util.SeleniumUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
