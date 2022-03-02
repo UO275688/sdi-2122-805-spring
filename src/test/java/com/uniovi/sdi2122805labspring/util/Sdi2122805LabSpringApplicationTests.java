@@ -86,7 +86,8 @@ class Sdi2122805LabSpringApplicationTests {
     @Test
     @Order(5)
     public void PR04() {
-        PO_HomeView.checkChangeLanguage(driver, "btnSpanish", "btnEnglish", PO_Properties.getSPANISH(), PO_Properties.getENGLISH());
+        PO_HomeView.checkChangeLanguage(driver, "btnSpanish", "btnEnglish",
+                PO_Properties.getSPANISH(), PO_Properties.getENGLISH());
     }
 
     @Test
