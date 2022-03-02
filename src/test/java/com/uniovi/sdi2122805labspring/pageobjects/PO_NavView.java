@@ -4,9 +4,7 @@ import com.uniovi.sdi2122805labspring.util.SeleniumUtils;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import java.util.List;
-
 import static com.uniovi.sdi2122805labspring.pageobjects.PO_View.getTimeout;
 
 public class PO_NavView {

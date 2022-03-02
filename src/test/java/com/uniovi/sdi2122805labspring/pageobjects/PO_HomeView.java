@@ -3,9 +3,7 @@ package com.uniovi.sdi2122805labspring.pageobjects;
 import com.uniovi.sdi2122805labspring.util.SeleniumUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import java.util.List;
-
 import static com.uniovi.sdi2122805labspring.pageobjects.PO_View.getTimeout;
 import static com.uniovi.sdi2122805labspring.pageobjects.PO_View.p;
 
@@ -33,4 +31,8 @@ public class PO_HomeView extends PO_NavView{
         PO_HomeView.changeLanguage(driver, textLanguage1);
         // Esperamos a que se cargue el saludo de bienvenida en Español
         PO_HomeView.checkWelcomeToPage(driver, locale1); }
+
+    public static PO_Properties getP() {
+        return p;
     }
+}
