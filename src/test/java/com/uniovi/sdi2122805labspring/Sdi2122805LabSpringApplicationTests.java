@@ -275,7 +275,6 @@ class Sdi2122805LabSpringApplicationTests {
         PO_PrivateView.clickOption(driver, "logout", "text", loginText);
     }
 
-
     //Eliminar una nota
     @Test
     @Order(17)
