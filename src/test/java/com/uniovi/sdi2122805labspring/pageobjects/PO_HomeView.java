@@ -3,11 +3,13 @@ package com.uniovi.sdi2122805labspring.pageobjects;
 import com.uniovi.sdi2122805labspring.util.SeleniumUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
 import java.util.List;
+
 import static com.uniovi.sdi2122805labspring.pageobjects.PO_View.getTimeout;
 import static com.uniovi.sdi2122805labspring.pageobjects.PO_View.p;
 
-public class PO_HomeView extends PO_NavView{
+public class PO_HomeView extends PO_NavView {
 
     //comprobar el mensaje de bienvenida, pero podría generalizarse para buscar cualquier clave del archivo de propiedades
     static public void checkWelcomeToPage(WebDriver driver, int language) {
@@ -20,17 +22,22 @@ public class PO_HomeView extends PO_NavView{
         return SeleniumUtils.waitLoadElementsBy(driver, "text", p.getString("welcome.message", language), getTimeout());
     }
 
-    static public void checkChangeLanguage(WebDriver driver, String textLanguage1, String textLanguage, int locale1, int locale2) {
+    static public void checkChangeLanguage(WebDriver driver, String textLanguage1, String textLanguage2, int locale1, int locale2) {
         //Esperamos a que se cargue el saludo de bienvenida en Español
         PO_HomeView.checkWelcomeToPage(driver, locale1);
+
         //Cambiamos a segundo idioma
-        PO_HomeView.changeLanguage(driver, textLanguage);
+        PO_HomeView.changeLanguage(driver, textLanguage2);
+
         // Comprobamos que el texto de bienvenida haya cambiado a segundo idioma
         PO_HomeView.checkWelcomeToPage(driver, locale2);
+
         //Volvemos a Español.
         PO_HomeView.changeLanguage(driver, textLanguage1);
+
         // Esperamos a que se cargue el saludo de bienvenida en Español
-        PO_HomeView.checkWelcomeToPage(driver, locale1); }
+        PO_HomeView.checkWelcomeToPage(driver, locale1);
+    }
 
     public static PO_Properties getP() {
         return p;

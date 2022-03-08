@@ -6,32 +6,32 @@ import org.openqa.selenium.WebElement;
 
 public class PO_LoginView {
 
-    public static void fillLoginForm(WebDriver driver, String dniTest, String passwordTest) {
+    public static void fillLoginForm(WebDriver driver, String dnip, String passwordp) {
         WebElement dni = driver.findElement(By.name("dni"));
         dni.click();
         dni.clear();
-        dni.sendKeys(dniTest);
+        dni.sendKeys(dnip);
 
         WebElement password = driver.findElement(By.name("password"));
         password.click();
         password.clear();
-        password.sendKeys(passwordTest);
+        password.sendKeys(passwordp);
 
         // Pulsar el boton de Alta.
         By boton = By.className("btn");
         driver.findElement(boton).click();
     }
 
-    public static void fillLoginForm(WebDriver driver, String dniTest, String passwordTest, String roleTest) {
+    public static void fillLoginForm(WebDriver driver, String dnip, String passwordp, String roleTest) {
         WebElement dni = driver.findElement(By.name("dni"));
         dni.click();
         dni.clear();
-        dni.sendKeys(dniTest);
+        dni.sendKeys(dnip);
 
         WebElement password = driver.findElement(By.name("password"));
         password.click();
         password.clear();
-        password.sendKeys(passwordTest);
+        password.sendKeys(passwordp);
 
         WebElement role = driver.findElement(By.name("role"));
         role.click();

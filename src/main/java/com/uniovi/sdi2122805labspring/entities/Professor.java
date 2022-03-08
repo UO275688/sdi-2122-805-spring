@@ -5,20 +5,30 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Teacher {
+public class Professor {
 
     @Id
     @GeneratedValue
+    private Long id;
+
     private String dni;
     private String name;
-    private String lastName;
+    private String surname;
     private String category;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getDni() {
         return dni;
     }
 
-    public void setId(String dni) {
+    public void setDni(String dni) {
         this.dni = dni;
     }
 
@@ -30,12 +40,12 @@ public class Teacher {
         return name;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastName(String surname) {
+        this.surname = surname;
     }
 
     public String getLastName() {
-        return lastName;
+        return surname;
     }
 
     public void setCategory(String category) {
@@ -46,18 +56,19 @@ public class Teacher {
         return category;
     }
 
-    public Teacher() {
+    public Professor() {
     }
 
-    public Teacher(String dni, String name, String lastName, String category) {
+    public Professor(Long id, String dni, String name, String surname, String category) {
+        this.id = id;
         this.dni = dni;
         this.name = name;
-        this.lastName = lastName;
+        this.surname = surname;
         this.category = category;
     }
 
     @Override
     public String toString() {
-        return "teacher{" + "id=" + dni + ", name=" + name +  ", apellidos=" + lastName +  ", categoria=" + category +'}';
+        return "teacher{" + "id=" + id + ", name=" + name +  ", apellidos=" + surname +  ", categoria=" + category +'}';
     }
 }

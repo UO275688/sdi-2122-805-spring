@@ -49,7 +49,6 @@ public class SeleniumUtils {
 		Assertions.assertTrue(resultado);
 	}
 
-
 	/**
 	 * Espera por la visibilidad de un elemento/s en la vista actualmente cargandose en driver. Para ello se empleará una consulta xpath.
 	 * @param driver: apuntando al navegador abierto actualmente.

@@ -40,9 +40,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 antMatchers("/mark/delete/*").hasAuthority("ROLE_PROFESSOR").
                 antMatchers("/mark/**").hasAnyAuthority("ROLE_STUDENT", "ROLE_PROFESSOR", "ROLE_ADMIN").
                 antMatchers("/user/**").hasAnyRole("ADMIN").
-                antMatchers("/teacher/add/*").hasAuthority("ROLE_ADMIN").
-                antMatchers("/teacher/delete/*").hasAuthority("ROLE_ADMIN").
-                antMatchers("/teacher/**").hasAnyAuthority("ROLE_STUDENT", "ROLE_PROFESSOR", "ROLE_ADMIN").
+                antMatchers("/professor/add/*").hasAuthority("ROLE_ADMIN").
+                antMatchers("/professor/delete/*").hasAuthority("ROLE_ADMIN").
+                antMatchers("/professor/**").hasAnyAuthority("ROLE_STUDENT", "ROLE_PROFESSOR", "ROLE_ADMIN").
                 anyRequest().authenticated().
                 and().
                 formLogin().loginPage("/login").permitAll().defaultSuccessUrl("/home").
